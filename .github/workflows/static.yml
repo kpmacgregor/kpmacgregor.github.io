@@ -30,8 +30,9 @@ jobs:
       - name: Get parent commit
         id: get-parent-commit
         run: |
-          git log -n 1
-
+          echo "parent-commit=$(git log -n 1 | grep commit | cut -d ' ' -f 2)" >> $GITHUB_OUTPUT
+      - name: Check parent commit
+        run: echo ${{ steps.get-parent-commit.outputs.parent-commit}}
   # copy-to-build-branch:
   #   runs-on: ubuntu-latest
     # steps:
