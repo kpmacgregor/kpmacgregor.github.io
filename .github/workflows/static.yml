@@ -28,10 +28,13 @@ jobs:
       last-commit: 
     steps:
       - name: Download artifact
+        id: download-artifact
         uses: actions/download-artifact@v3
         with:
           name: last-commit-hash
-          
+      - name: Echo download path
+        run: echo ${{ steps.download-artifact.outputs.download-path }}
+
   get-delete-list:
     runs-on: ubuntu-latest
     outputs:
