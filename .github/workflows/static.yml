@@ -22,6 +22,21 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  get-delete-list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Get parent commit
+        id: get-parent-commit
+        run: |
+          git log -n 1
+          
+  copy-to-build-branch:
+    runs-on: ubuntu-latest
+    # steps:
+    #   - name: 
+
   # Single deploy job since we're just deploying
   deploy:
     environment:
