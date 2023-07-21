@@ -30,7 +30,7 @@ jobs:
       - name: Get parent commit
         id: get-parent-commit
         run: |
-          echo "parent-commit=$(git log -n 2 | grep commit | tail -n 1 | cut -d ' ' -f 2)" >> $GITHUB_OUTPUT
+          echo "parent-commit=$(git log -n 2 | grep ^commit | tail -n 1 | cut -d ' ' -f 2)" >> $GITHUB_OUTPUT
       - name: Check parent commit
         run: echo ${{ steps.get-parent-commit.outputs.parent-commit}}
       - name: Get deletes
