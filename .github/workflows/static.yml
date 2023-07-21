@@ -39,6 +39,7 @@ jobs:
 
   # Single deploy job since we're just deploying
   deploy:
+    if: ${{ 1 == 0 }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
