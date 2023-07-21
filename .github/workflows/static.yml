@@ -38,7 +38,7 @@ jobs:
       - name: Get deletes
         id: get-delete-list
         run: |
-          git log --diff-filter=D --summary ${{ steps.get-parent-commit.outputs.parent-commit }}..HEAD | grep delete | cut -d ' ' -f 5
+          git log --diff-filter=D --summary ${{ steps.get-parent-commit.outputs.parent-commit }}..HEAD | grep ^" delete" | cut -d ' ' -f 5
       - name: git log
         run: git log -n 2
 
