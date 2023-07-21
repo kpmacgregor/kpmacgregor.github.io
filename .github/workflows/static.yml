@@ -43,7 +43,7 @@ jobs:
           echo 'EOF' >> $GITHUB_OUTPUT
       - name: Check deletes
         run: |
-          echo ${{ steps.get-delete-list.outputs.delete-list }}
+          echo "${{ steps.get-delete-list.outputs.delete-list }}"
       - name: git log
         run: git log -n 2
 
