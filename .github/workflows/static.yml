@@ -38,8 +38,8 @@ jobs:
         run: |
           git log --diff-filter=D --summary ${{ steps.get-parent-commit.outputs.parent-commit }}..HEAD | grep delete | cut -d ' ' -f 5
       - name: git log
-        run: git log
-        
+        run: git log -n 2
+
   # copy-to-build-branch:
   #   runs-on: ubuntu-latest
     # steps:
