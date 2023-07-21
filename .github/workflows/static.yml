@@ -22,8 +22,20 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  get-last-commit:
+    runs-on: ubuntu-latest
+    outputs:
+      last-commit: 
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: last-commit-hash
+          
   get-delete-list:
     runs-on: ubuntu-latest
+    outputs:
+      delete-list: ${{ steps.get-get-delete-list.outputs.delete-list }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
