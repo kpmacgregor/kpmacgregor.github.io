@@ -80,6 +80,10 @@ jobs:
           done
       - name: Git status
         run: git status
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Applies deletes from main"
 
   # copy-to-build-branch:
   #   runs-on: ubuntu-latest
