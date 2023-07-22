@@ -32,9 +32,10 @@ jobs:
         uses: SamhammerAG/last-successful-build-action@v4
         with:
           branch: "main"
+          workflow: "Deploy static content to Pages"
       - name: Echo commit
         run: echo ${{ steps.commit-sha.outputs.sha }}
-        
+
   get-delete-list:
     runs-on: ubuntu-latest
     outputs:
