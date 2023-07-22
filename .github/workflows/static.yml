@@ -27,14 +27,14 @@ jobs:
     outputs:
       last-commit: 
     steps:
-      - name: Download artifact
-        id: download-artifact
-        uses: actions/download-artifact@v3
+      - name: Find last successful build
+        id: commit-sha
+        uses: SamhammerAG/last-successful-build-action@v4
         with:
-          name: last-commit-hash
-      - name: Echo download path
-        run: echo ${{ steps.download-artifact.outputs.download-path }}
-
+          branch: "main"
+      - name: Echo commit
+        run: echo ${{ steps.commit-sha.outputs.sha }}
+        
   get-delete-list:
     runs-on: ubuntu-latest
     outputs:
