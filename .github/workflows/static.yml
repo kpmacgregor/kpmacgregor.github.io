@@ -73,6 +73,8 @@ jobs:
               rm $FILE
             fi
           done
+      - name: Git status
+        run: git status
 
   # copy-to-build-branch:
   #   runs-on: ubuntu-latest
