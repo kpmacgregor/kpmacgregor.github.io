@@ -81,9 +81,10 @@ jobs:
       - name: Git status
         run: git status
       - name: Commit changes
-        run: |
-          git add .
-          git commit -m "Applies deletes from main"
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: Applies deletes from main
+          push: true
 
   # copy-to-build-branch:
   #   runs-on: ubuntu-latest
