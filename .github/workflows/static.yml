@@ -63,9 +63,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: site
       - name: Switch to site branch
         run: |
-          git switch site
           ls *
 
   # copy-to-build-branch:
