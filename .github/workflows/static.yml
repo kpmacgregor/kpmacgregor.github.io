@@ -74,6 +74,8 @@ jobs:
             if [ -f "./$FILE" ]; then
               echo "Deleting $FILE"
               rm $FILE
+            else
+              echo "Couldn't find ./$FILE"
             fi
           done
       - name: Git status
