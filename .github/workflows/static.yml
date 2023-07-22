@@ -68,7 +68,8 @@ jobs:
       - name: Delete files
         run: |
           for FILE in "${{ needs.get-delete-list.outputs.delete-list }}"; do
-            echo $FILE
+            echo "$FILE"
+            rm "$FILE"
           done
 
   # copy-to-build-branch:
