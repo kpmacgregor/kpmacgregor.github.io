@@ -69,7 +69,7 @@ jobs:
         run: |
           for FILE in "${{ needs.get-delete-list.outputs.delete-list }}"; do
             echo "$FILE"
-            if [ -f $FILE ]; then
+            if [ -f "$FILE" ]; then
               rm $FILE
             fi
           done
