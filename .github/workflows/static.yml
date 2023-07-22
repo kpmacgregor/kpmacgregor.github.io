@@ -53,11 +53,20 @@ jobs:
           echo 'delete-list<<EOF' >> $GITHUB_OUTPUT
           echo "$(git log --diff-filter=D --summary ${{ needs.get-last-commit.outputs.last-commit }}..HEAD | grep ^" delete" | cut -d ' ' -f 5 | sort -u -)" >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
-      - name: Check deletes
+      - name: Echo deletes
         run: |
           echo "${{ steps.get-delete-list.outputs.delete-list }}"
-      - name: git log
-        run: git log -n 2
+
+  delete-files-from-site:
+    runs-on: ubuntu-latest
+    needs: get-delete-list
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Switch to site branch
+        run: |
+          git switch site
+          ls *
 
   # copy-to-build-branch:
   #   runs-on: ubuntu-latest
