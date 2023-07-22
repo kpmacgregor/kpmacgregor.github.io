@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Build and deploy site
 
 on:
   # Runs on pushes targeting the default branch
@@ -32,14 +32,14 @@ jobs:
         uses: SamhammerAG/last-successful-build-action@v4
         with:
           branch: "main"
-          workflow: "Deploy static content to Pages"
+          workflow: ${{ github.workflow }}
       - name: Echo commit
         run: echo ${{ steps.commit-sha.outputs.sha }}
 
   get-delete-list:
     runs-on: ubuntu-latest
     outputs:
-      delete-list: ${{ steps.get-get-delete-list.outputs.delete-list }}
+      delete-list: ${{ steps.get-delete-list.outputs.delete-list }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
