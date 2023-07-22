@@ -65,11 +65,14 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: site
+      - name: ls
+        run: ls
       - name: Delete files
         run: |
           for FILE in "${{ needs.get-delete-list.outputs.delete-list }}"; do
             echo "$FILE"
             if [ -f "$FILE" ]; then
+              echo "Deleting $FILE"
               rm $FILE
             fi
           done
