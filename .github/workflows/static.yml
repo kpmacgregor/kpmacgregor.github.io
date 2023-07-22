@@ -66,7 +66,7 @@ jobs:
         with:
           ref: site
       - name: ls
-        run: ls
+        run: ls *
       - name: Delete files
         run: |
           for FILE in "${{ needs.get-delete-list.outputs.delete-list }}"; do
